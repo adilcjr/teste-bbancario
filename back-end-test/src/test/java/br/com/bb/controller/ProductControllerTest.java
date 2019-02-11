@@ -76,4 +76,28 @@ public class ProductControllerTest {
 		.andExpect(jsonPath("$[2].id", is(8)))
 		.andExpect(jsonPath("$[2].name", is("Estante")));
 	}
+	
+	@Test
+	public void listByCategoryNoContent() throws Exception {
+		mockMvc.perform(get("/product/listByCategory/999")
+				.contentType(MediaType.APPLICATION_JSON)
+        		.characterEncoding("utf-8"))
+		.andExpect(status().isNoContent());
+	}
+	
+	@Test
+	public void listByCategoryBadRequest() throws Exception {
+		mockMvc.perform(get("/product/listByCategory/A")
+				.contentType(MediaType.APPLICATION_JSON)
+        		.characterEncoding("utf-8"))
+		.andExpect(status().isBadRequest());
+	}
+	
+	@Test
+	public void listByCategoryNotFound() throws Exception {
+		mockMvc.perform(get("/product/listByCategory/")
+				.contentType(MediaType.APPLICATION_JSON)
+        		.characterEncoding("utf-8"))
+		.andExpect(status().isNotFound());
+	}
 }

@@ -2,15 +2,14 @@ package br.com.bb.repository;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import br.com.bb.entity.Product;
 
+@Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
 	
-	//@Query("SELECT p FROM Product p WHERE p.category.id=:idCategory")
-	List<Product> findProductByCategoryIdOrderById(long categoryId);
+	List<Product> findProductsByCategoryIdOrderById(long categoryId);
 
 }

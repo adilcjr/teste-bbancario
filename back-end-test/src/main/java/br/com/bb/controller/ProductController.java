@@ -32,7 +32,7 @@ public class ProductController {
 		if (!products.isEmpty()) {
 			return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
 		}
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 }

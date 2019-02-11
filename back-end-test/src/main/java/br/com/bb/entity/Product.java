@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-//@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 7257436998473939477L;

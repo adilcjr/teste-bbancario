@@ -17,7 +17,7 @@ public class ProductServiceImp implements IProductService {
 	@Override
 	public List<Product> listByCategoryId(long categoryId) {
 		
-		List<Product> products = productRepository.findProductByCategoryIdOrderById(categoryId);
+		List<Product> products = productRepository.findProductsByCategoryIdOrderById(categoryId);
 		return products;
 	}
 }
