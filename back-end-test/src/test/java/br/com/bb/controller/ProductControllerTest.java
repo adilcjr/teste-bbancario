@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,7 +36,9 @@ public class ProductControllerTest {
 
 	@Test
     public void listByCategoryAlimentos() throws Exception {
-        mockMvc.perform(get("/product/listByCategory/1"))
+        mockMvc.perform(get("/product/listByCategory/1")
+        		.contentType(MediaType.APPLICATION_JSON)
+        		.characterEncoding("utf-8"))
         .andExpect(status().isOk())
 	    		.andExpect(jsonPath("$", hasSize(2)))
 	        .andExpect(jsonPath("$[0].id", is(1)))
@@ -46,7 +49,9 @@ public class ProductControllerTest {
 
 	@Test
 	public void listByCategoryEletrodomésticos() throws Exception {
-		mockMvc.perform(get("/product/listByCategory/2"))
+		mockMvc.perform(get("/product/listByCategory/2")
+				.contentType(MediaType.APPLICATION_JSON)
+        		.characterEncoding("utf-8"))
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("$", hasSize(3)))
 		.andExpect(jsonPath("$[0].id", is(3)))
@@ -59,7 +64,9 @@ public class ProductControllerTest {
 
 	@Test
 	public void listByCategoryMóveis() throws Exception {
-		mockMvc.perform(get("/product/listByCategory/3"))
+		mockMvc.perform(get("/product/listByCategory/3")
+				.contentType(MediaType.APPLICATION_JSON)
+        		.characterEncoding("utf-8"))
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("$", hasSize(3)))
 		.andExpect(jsonPath("$[0].id", is(6)))

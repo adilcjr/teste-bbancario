@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,9 +36,11 @@ public class CategoryControllerTest {
 
 	@Test
     public void listAll() throws Exception {
-        mockMvc.perform(get("/category/listAll"))
+        mockMvc.perform(get("/category/listAll")
+        		.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+        		.characterEncoding("utf-8"))
         .andExpect(status().isOk())
-	    		.andExpect(jsonPath("$", hasSize(3)))
+	    	.andExpect(jsonPath("$", hasSize(3)))
 	        .andExpect(jsonPath("$[0].id", is(1)))
 	        .andExpect(jsonPath("$[0].name", is("Alimentos")))
 	        .andExpect(jsonPath("$[1].id", is(2)))
