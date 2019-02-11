@@ -1,11 +1,13 @@
 CREATE TABLE category (
-	id int primary key,
-	name varchar(50)
+	id int NOT NULL AUTO_INCREMENT,
+	name varchar(50),
+	primary key (id)
  );
 
 CREATE TABLE product (
-	id int primary key,
+	id int NOT NULL AUTO_INCREMENT,
 	name varchar(50),
 	cat_id int,
+	primary key (id),
 	foreign key (cat_id) references category(id)
 );

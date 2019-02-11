@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Category implements Serializable {
 	
 	private static final long serialVersionUID = -244884492435032980L;
@@ -28,7 +27,7 @@ public class Category implements Serializable {
 	
 	private String name;
 	
-	@OneToMany(mappedBy="category", cascade=CascadeType.DETACH, fetch=FetchType.LAZY)	
+	@OneToMany(mappedBy="category", cascade=CascadeType.ALL, fetch=FetchType.LAZY)	
 	private Set<Product> products;
 
 	public long getId() {
