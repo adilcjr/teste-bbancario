@@ -46,6 +46,6 @@ public class CategoryControllerTest {
 	        .andExpect(jsonPath("$[1].id", is(2)))
 	        .andExpect(jsonPath("$[1].name", is("Eletrodomésticos")))
 	        .andExpect(jsonPath("$[2].id", is(3)))
-	        .andExpect(jsonPath("$[2].name", is("Móveis")));
+	        .andExpect(jsonPath("$[2].name", is("Móveis")));        
     }
 }
